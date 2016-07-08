@@ -2,12 +2,11 @@ var http = require('http');
 var work = require('./lib/timetrack');
 var mysql = require('mysql');
 
-var db = mysql.net.createConnection({
+var db = mysql.createConnection({
 	host: '127.0.0.1',
-	user: 'myuser',
-	password : 'mypassword',
+	user: 'cc',
+	password : 'cc',
 	database : 'timetrack'
-
 });
 
 var server = http.createServer(function (req, res) {
@@ -42,7 +41,7 @@ db.query(
 	"CREATE TABLE IF NOT EXISTS work ("
 		+ "id INT(10) NOT NULL AUTO_INCREMENT, "
 		+ "hours DECIMAL(5,2) DEFAULT 0, "
-		+ "data DATA, "
+		+ "date DATE, "
 		+ "archived INT(1) DEFAULT 0, "
 		+ "description LONGTEXT, "
 		+ "PRIMARY KEY(id)) ",
